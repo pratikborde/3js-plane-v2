@@ -1,6 +1,6 @@
 # Another wave patter
 
-For a demo follow this link: [DEMO][https://codepen.io/cheekymonkey/full/vMvYNV]
+For a demo follow this link: [DEMO](https://codepen.io/cheekymonkey/full/vMvYNV)
 
 ## Instructions
 
