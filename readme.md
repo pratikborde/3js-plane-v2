@@ -1,6 +1,6 @@
-# Typescript template
+# Another wave patter
 
-A minimal template for a vanilla typescript project using [Parcel](https://parceljs.org/).
+For a demo follow this link: [DEMO](https://codepen.io/cheekymonkey/full/vMvYNV)
 
 ## Instructions
 
