@@ -3,6 +3,8 @@ import simplexNoise from 'simplex-noise'
 
 const width = window.innerWidth
 const height = window.innerHeight
+const rendererBg = new three.Color('#5d5d5d')
+const clothColor = '#ffaaa5'
 
 let renderer: three.WebGLRenderer
 let scene: three.Scene
@@ -17,7 +19,7 @@ function init() {
   document.body.style.margin = '0'
   createScene()
   createCamera()
-  createShape()
+  createCloth()
   addSpotlight('#fdffab')
   addAmbientLight()
   animate()
@@ -39,7 +41,7 @@ function createScene() {
   })
   renderer.setSize(width, height)
   renderer.setPixelRatio(window.devicePixelRatio)
-  renderer.setClearColor(new three.Color('#5d5d5d'))
+  renderer.setClearColor(rendererBg)
   renderer.shadowMap.enabled = true
   renderer.shadowMap.type = three.PCFSoftShadowMap
   noise = new simplexNoise()
@@ -52,11 +54,11 @@ function createCamera() {
   camera.position.set(0, 0, 20)
 }
 
-function createShape() {
+function createCloth() {
   const seg = 100
   geometry = new three.PlaneGeometry(5, 8, seg, seg)
   const material = new three.MeshPhysicalMaterial({
-    color: '#ffaaa5',
+    color: clothColor,
     metalness: 0.6,
     emissive: '#000',
     side: three.DoubleSide,
@@ -78,13 +80,13 @@ function addSpotlight(color: string | number | three.Color | undefined) {
 }
 
 function addAmbientLight() {
-  const light = new three.AmbientLight('#fff', 1)
+  const light = new three.AmbientLight('#fff', 0.5)
   scene.add(light)
 }
 
 function animate() {
   requestAnimationFrame(animate)
-  const offset = Date.now() * 0.0002
+  const offset = Date.now() * 0.0003
   adjustVertices(offset)
   camera.updateProjectionMatrix()
   renderer.render(scene, camera)

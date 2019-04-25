@@ -34140,6 +34140,8 @@ var simplex_noise_1 = __importDefault(require("simplex-noise"));
 
 var width = window.innerWidth;
 var height = window.innerHeight;
+var rendererBg = new three.Color('#5d5d5d');
+var clothColor = '#ffaaa5';
 var renderer;
 var scene;
 var camera;
@@ -34152,7 +34154,7 @@ function init() {
   document.body.style.margin = '0';
   createScene();
   createCamera();
-  createShape();
+  createCloth();
   addSpotlight('#fdffab');
   addAmbientLight();
   animate();
@@ -34173,7 +34175,7 @@ function createScene() {
   });
   renderer.setSize(width, height);
   renderer.setPixelRatio(window.devicePixelRatio);
-  renderer.setClearColor(new three.Color('#5d5d5d'));
+  renderer.setClearColor(rendererBg);
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = three.PCFSoftShadowMap;
   noise = new simplex_noise_1.default();
@@ -34185,11 +34187,11 @@ function createCamera() {
   camera.position.set(0, 0, 20);
 }
 
-function createShape() {
+function createCloth() {
   var seg = 100;
   geometry = new three.PlaneGeometry(5, 8, seg, seg);
   var material = new three.MeshPhysicalMaterial({
-    color: '#ffaaa5',
+    color: clothColor,
     metalness: 0.6,
     emissive: '#000',
     side: three.DoubleSide,
@@ -34211,13 +34213,13 @@ function addSpotlight(color) {
 }
 
 function addAmbientLight() {
-  var light = new three.AmbientLight('#fff', 1);
+  var light = new three.AmbientLight('#fff', 0.5);
   scene.add(light);
 }
 
 function animate() {
   requestAnimationFrame(animate);
-  var offset = Date.now() * 0.0002;
+  var offset = Date.now() * 0.0003;
   adjustVertices(offset);
   camera.updateProjectionMatrix();
   renderer.render(scene, camera);
@@ -34262,7 +34264,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64149" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50542" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
