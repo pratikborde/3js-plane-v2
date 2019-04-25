@@ -15,5 +15,10 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-standard": "^8.0.1",
     "typescript": "^3.4.3"
+  },
+  "dependencies": {
+    "@types/three": "^0.103.2",
+    "simplex-noise": "^2.4.0",
+    "three": "^0.104.0"
   }
 }
