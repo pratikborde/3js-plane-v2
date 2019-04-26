@@ -1,4 +1,4 @@
-# Another wave patter
+# Cloth
 
 For a demo follow this link: [DEMO](https://codepen.io/cheekymonkey/full/vMvYNV)
 
